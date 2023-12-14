@@ -34,7 +34,12 @@ import { colors } from "app/theme"
 export type AppStackParamList = {
   Welcome: undefined
   // 🔥 Your screens go here
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  UserSettings: undefined
+	AirWallex: undefined
+	ChargingStations: undefined
+	TxnHist: undefined
+	TxnDetails: undefined
+	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -58,7 +63,12 @@ const AppStack = observer(function AppStack() {
     >
           <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
       {/** 🔥 Your screens go here */}
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
+      <Stack.Screen name="UserSettings" component={Screens.UserSettingsScreen} />
+			<Stack.Screen name="AirWallex" component={Screens.AirWallexScreen} />
+			<Stack.Screen name="ChargingStations" component={Screens.ChargingStationsScreen} />
+			<Stack.Screen name="TxnHist" component={Screens.TxnHistScreen} />
+			<Stack.Screen name="TxnDetails" component={Screens.TxnDetailsScreen} />
+			{/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )
 })
