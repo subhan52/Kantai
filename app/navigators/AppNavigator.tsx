@@ -8,6 +8,7 @@ import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
+  NavigatorScreenParams,
 } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { observer } from "mobx-react-lite"
@@ -17,6 +18,7 @@ import * as Screens from "app/screens"
 import Config from "../config"
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
+import { DashboardNavigator, DashboardNavigatorParamList } from "./DashboardNavigator"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -35,11 +37,13 @@ export type AppStackParamList = {
   Welcome: undefined
   // 🔥 Your screens go here
   UserSettings: undefined
-	AirWallex: undefined
-	ChargingStations: undefined
-	TxnHist: undefined
-	TxnDetails: undefined
-	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  AirWallex: undefined
+  ChargingStations: undefined
+  TxnHist: undefined
+  TxnDetails: undefined
+  Logout: undefined
+  Dashboard: NavigatorScreenParams<DashboardNavigatorParamList>
+  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -55,20 +59,24 @@ export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStack
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<AppStackParamList>()
+const isAuthenticated = false
 
 const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
+      initialRouteName={isAuthenticated ? "Welcome" : "Dashboard"}
     >
-          <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
+      <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
       {/** 🔥 Your screens go here */}
       <Stack.Screen name="UserSettings" component={Screens.UserSettingsScreen} />
-			<Stack.Screen name="AirWallex" component={Screens.AirWallexScreen} />
-			<Stack.Screen name="ChargingStations" component={Screens.ChargingStationsScreen} />
-			<Stack.Screen name="TxnHist" component={Screens.TxnHistScreen} />
-			<Stack.Screen name="TxnDetails" component={Screens.TxnDetailsScreen} />
-			{/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
+      <Stack.Screen name="AirWallex" component={Screens.AirWallexScreen} />
+      <Stack.Screen name="ChargingStations" component={Screens.ChargingStationsScreen} />
+      <Stack.Screen name="TxnHist" component={Screens.TxnHistScreen} />
+      <Stack.Screen name="TxnDetails" component={Screens.TxnDetailsScreen} />
+      <Stack.Screen name="Dashboard" component={DashboardNavigator} />
+      <Stack.Screen name="Logout" component={Screens.LogoutScreen} />
+      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )
 })

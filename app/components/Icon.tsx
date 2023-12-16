@@ -83,7 +83,7 @@ export function Icon(props: IconProps) {
     </Wrapper>
   )
 }
-
+// define all your Icons here:
 export const iconRegistry = {
   back: require("../../assets/icons/back.png"),
   bell: require("../../assets/icons/bell.png"),
