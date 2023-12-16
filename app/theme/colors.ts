@@ -11,12 +11,12 @@ const palette = {
   neutral800: "#191015",
   neutral900: "#000000",
 
-  primary100: "#F4E0D9",
-  primary200: "#E8C1B4",
-  primary300: "#DDA28E",
-  primary400: "#D28468",
-  primary500: "#C76542",
-  primary600: "#A54F31",
+  primary100: "#F9F9E0",
+  primary200: "#F3F8FF",
+  primary300: "#FF90BC",
+  primary400: "#E26EE5",
+  primary500: "#7E30E1",
+  primary600: "#49108B",
 
   secondary100: "#DCDDE9",
   secondary200: "#BCC0D6",
@@ -32,6 +32,13 @@ const palette = {
 
   angry100: "#F2D6CD",
   angry500: "#C03403",
+
+  theme100: "#fcfffe",
+  theme200: "#e6f9f8",
+  theme300: "#E7BCDE",
+  theme400: "#e7288f",
+  theme500: "#8d54d7",
+  theme600: "#972baf",
 
   overlay20: "rgba(25, 16, 21, 0.2)",
   overlay50: "rgba(25, 16, 21, 0.5)",

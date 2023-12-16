@@ -161,7 +161,7 @@ const $viewPresets = {
 
   reversed: [
     $baseViewStyle,
-    { backgroundColor: colors.palette.neutral800 },
+    { backgroundColor: colors.palette.primary600 },
   ] as StyleProp<ViewStyle>,
 }
 

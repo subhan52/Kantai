@@ -1,7 +1,12 @@
 import { colors, spacing, typography } from "app/theme"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { TextStyle, ViewStyle } from "react-native"
-import { AirWallexScreen, ChargingStationsScreen, TxnHistScreen, UserSettingsScreen } from "app/screens"
+import {
+  AirWallexScreen,
+  ChargingStationsScreen,
+  TxnHistScreen,
+  UserSettingsScreen,
+} from "app/screens"
 import { Icon } from "app/components"
 import { BottomTabScreenProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { CompositeScreenProps } from "@react-navigation/native"
@@ -11,7 +16,7 @@ import { commonConstants } from "app/utils/commonConstants"
 
 export type DashboardNavigatorParamList = {
   // whichever screens we can able to navigate to should be listed here
-  ChargingStations: undefined
+  ChargingStations: { queryIndex?: string; itemIndex?: string }
   TxnHist: undefined
   AirWallex: undefined
   TxnDetails: undefined
