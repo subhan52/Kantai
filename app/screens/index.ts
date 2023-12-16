@@ -1,3 +1,10 @@
 export * from "./WelcomeScreen"
 export * from "./ErrorScreen/ErrorBoundary"
 // export other screens here
+export * from "./UserSettingsScreen"
+export * from "./AirWallexScreen"
+export * from "./ChargingStationsScreen/ChargingStationsScreen"
+export * from "./TxnHistScreen"
+export * from "./TxnDetailsScreen"
+export * from "./LogoutScreen"
+export * from "./LoginScreen"

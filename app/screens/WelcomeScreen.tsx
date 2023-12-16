@@ -1,21 +1,36 @@
 import { observer } from "mobx-react-lite"
 import React, { FC } from "react"
 import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
-import {
-  Text,
-} from "app/components"
+import { Button, Text } from "app/components"
 import { isRTL } from "../i18n"
 import { AppStackScreenProps } from "../navigators"
 import { colors, spacing } from "../theme"
 import { useSafeAreaInsetsStyle } from "../utils/useSafeAreaInsetsStyle"
+import { useStores } from "app/models"
+import { useHeader } from "app/utils/useHeader"
 
 const welcomeLogo = require("../../assets/images/logo.png")
 const welcomeFace = require("../../assets/images/welcome-face.png")
 
 interface WelcomeScreenProps extends AppStackScreenProps<"Welcome"> {}
 
-export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen(
-) {
+export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeScreen(_props) {
+  const { navigation } = _props
+  const {
+    authenticationStore: { logout },
+  } = useStores()
+
+  function goNext() {
+    navigation.navigate("Dashboard", { screen: "ChargingStations", params: {} })
+  }
+
+  useHeader(
+    {
+      rightText: "common.logOut",
+      onRightPress: logout,
+    },
+    [logout],
+  )
 
   const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
@@ -36,6 +51,8 @@ export const WelcomeScreen: FC<WelcomeScreenProps> = observer(function WelcomeSc
       <View style={[$bottomContainer, $bottomContainerInsets]}>
         <Text tx="welcomeScreen.postscript" size="md" />
       </View>
+
+      <Button testID="next-screen-button" preset="reversed" text="Next Screen" onPress={goNext} />
     </View>
   )
 })
